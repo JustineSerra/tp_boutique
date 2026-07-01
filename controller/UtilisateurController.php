@@ -1,13 +1,10 @@
 <?php
-require_once "Database.php";
+require_once "./config/Database.php";
 
 if (isset($_SESSION["user_id"])) {
-    header("Location: dashboard.php");
+    // header("Location: ./view/index.php");
     exit;
-}
-
-$error_msg = null;
-
+};
 //verif : si le formulaire a la methode post - > je continue !!
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
@@ -20,16 +17,33 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $request->execute(["email" => $email]);
         $user = $request->fetch();
 
-        $passwordVerif = password_verify($password, $user["mot_de_passe"]);
+        $passwordVerif = password_verify($password, $user["password"]);
 
         if ($passwordVerif) {
             $_SESSION["user_id"] = $user["id"];
             $_SESSION["user_email"] = $user["email"];
-            header("Location: dashboard.php");
+            // header("Location: ./view/login.php");
             exit;
         } else {
 
             $error_msg = "MOT DE PASSE OU EMAIL INCORRECT";
         }
     }
+}
+//INSCRIPTION UTILISATEUR -> enregistre l'email et le mdp (en hash)
+
+if (isset($_POST['submit'])) {
+    $email = $_POST['email'];
+    $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+    $passwordconfirm = $_POST['password_confirm'];
+
+    $requete = $pdo->prepare("INSERT INTO users (email, password_hash) VALUES(:email, :password_hash)");
+    $requete->execute(
+        array(
+            "email" => $email,
+            "password_hash" => $password
+        )
+    );
+    echo "inscription réussie!";
+    // header("Location: ./view/login.php");
 }
