@@ -27,7 +27,7 @@ class ProduitRepository {
         //création de l'objet Produit
 
         $pdo=Database::getConnexion();
-        $stmt=$pdo->prepare("INSERT INTO products (nom, description, prix) VALUES (:nom, :description, :prix)");
+        $stmt=$pdo->prepare("INSERT INTO products (name, description, price) VALUES (:name, :description, :price)");
         return $stmt->execute([
             ':name' => $produit->getNom(),
             ':description' => $produit->getDescription(),
@@ -39,7 +39,7 @@ class ProduitRepository {
         //modification de l'objet Produit
 
         $pdo=Database::getConnexion();
-        $stmt=$pdo->prepare("UPDATE products SET nom=:nom, description=:description, prix=:prix WHERE id=:id");
+        $stmt=$pdo->prepare("UPDATE products SET name=:name, description=:description, price=:price WHERE id=:id");
         return $stmt->execute([
             ':id' => $produit->getId(),
             ':name' => $produit->getNom(),
