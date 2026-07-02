@@ -8,13 +8,17 @@ class ProduitRepository {
     //récupère les produits de la base de données et les retourne sous forme d'un tableau d'objets Produit
     {
         $pdo=Database::getConnexion();
-        $stmt = $pdo->query("SELECT * FROM produit");
+        $stmt = $pdo->query("SELECT * FROM products");
         $rows = $stmt->fetchAll(); 
         //récupère toutes les lignes de la table produit
         $produits = [];
         //sert à stocker les objets Produit
         foreach ($rows as $row) {
-            $produits[] = new Produit($row['id'], $row['nom'], $row['description'], (float)$row['prix']);
+            $produits[] = new Produit(
+            (int)$row['id'], 
+            $row['name'],
+            $row['description'],
+            (float)$row['price']);
         }
         return $produits;
     }
@@ -23,11 +27,11 @@ class ProduitRepository {
         //création de l'objet Produit
 
         $pdo=Database::getConnexion();
-        $stmt=$pdo->prepare("INSERT INTO produit (nom, description, prix) VALUES (:nom, :description, :prix)");
+        $stmt=$pdo->prepare("INSERT INTO products (name, description, price) VALUES (:name, :description, :price)");
         return $stmt->execute([
-            ':nom' => $produit->getNom(),
+            ':name' => $produit->getNom(),
             ':description' => $produit->getDescription(),
-            ':prix' => $produit->getPrix()
+            ':price' => $produit->getPrix()
         ]);
     }
 
@@ -35,12 +39,12 @@ class ProduitRepository {
         //modification de l'objet Produit
 
         $pdo=Database::getConnexion();
-        $stmt=$pdo->prepare("UPDATE produit SET nom=:nom, description=:description, prix=:prix WHERE id=:id");
+        $stmt=$pdo->prepare("UPDATE products SET name=:name, description=:description, price=:price WHERE id=:id");
         return $stmt->execute([
             ':id' => $produit->getId(),
-            ':nom' => $produit->getNom(),
+            ':name' => $produit->getNom(),
             ':description' => $produit->getDescription(),
-            ':prix' => $produit->getPrix()
+            ':price' => $produit->getPrix()
         ]);
     }
 
@@ -48,7 +52,7 @@ class ProduitRepository {
         //suppression de l'objet Produit
 
         $pdo=Database::getConnexion();
-        $stmt=$pdo->prepare("DELETE FROM produit WHERE id=:id");
+        $stmt=$pdo->prepare("DELETE FROM products WHERE id=:id");
         return $stmt->execute([
             ':id' => $id
         ]);
