@@ -14,7 +14,11 @@ class ProduitRepository {
         $produits = [];
         //sert à stocker les objets Produit
         foreach ($rows as $row) {
-            $produits[] = new Produit($row['id'], $row['nom'], $row['description'], (float)$row['prix']);
+            $produits[] = new Produit(
+            (int)$row['id'], 
+            $row['name'],
+            $row['description'],
+            (float)$row['price']);
         }
         return $produits;
     }
@@ -25,9 +29,9 @@ class ProduitRepository {
         $pdo=Database::getConnexion();
         $stmt=$pdo->prepare("INSERT INTO products (nom, description, prix) VALUES (:nom, :description, :prix)");
         return $stmt->execute([
-            ':nom' => $produit->getNom(),
+            ':name' => $produit->getNom(),
             ':description' => $produit->getDescription(),
-            ':prix' => $produit->getPrix()
+            ':price' => $produit->getPrix()
         ]);
     }
 
@@ -38,9 +42,9 @@ class ProduitRepository {
         $stmt=$pdo->prepare("UPDATE products SET nom=:nom, description=:description, prix=:prix WHERE id=:id");
         return $stmt->execute([
             ':id' => $produit->getId(),
-            ':nom' => $produit->getNom(),
+            ':name' => $produit->getNom(),
             ':description' => $produit->getDescription(),
-            ':prix' => $produit->getPrix()
+            ':price' => $produit->getPrix()
         ]);
     }
 
