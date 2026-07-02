@@ -24,15 +24,3 @@ require_once __DIR__ . "/../repository/UtilisateurRepository.php";
 //         $user = $request->fetch();
 //         var_dump($user);
 //         $passwordVerif = password_verify($password, $user["password_hash"]);
-
-//         if ($passwordVerif) {
-//             $_SESSION["user_id"] = $user["id"];
-//             $_SESSION["user_email"] = $user["email"];
-//             header("Location: /view/accueil.php");
-//             exit;
-//         } else {
-//             $error_msg = "MOT DE PASSE OU EMAIL INCORRECT";
-//             echo $error_msg;
-//         }
-//     }
-// }
