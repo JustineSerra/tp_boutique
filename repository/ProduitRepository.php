@@ -8,7 +8,7 @@ class ProduitRepository {
     public function displayProducts(): array
     //récupère les produits de la base de données et les retourne sous forme d'un tableau d'objets Produit
     {
-        $pdo=Database::getConnection();
+        $pdo=Database::getConnexion();
         $stmt = $pdo->query("SELECT * FROM produit");
         $rows = $stmt->fetchAll(); 
         //récupère toutes les lignes de la table produit
@@ -23,7 +23,7 @@ class ProduitRepository {
     public function addProducts(Produit $produit): bool{
         //création de l'objet Produit
 
-        $pdo=Database::getConnection();
+        $pdo=Database::getConnexion();
         $stmt=$pdo->prepare("INSERT INTO produit (nom, description, prix) VALUES (:nom, :description, :prix)");
         return $stmt->execute([
             ':nom' => $produit->getNom(),
@@ -35,7 +35,7 @@ class ProduitRepository {
     public function modifyProducts(Produit $produit): bool{
         //modification de l'objet Produit
 
-        $pdo=Database::getConnection();
+        $pdo=Database::getConnexion();
         $stmt=$pdo->prepare("UPDATE produit SET nom=:nom, description=:description, prix=:prix WHERE id=:id");
         return $stmt->execute([
             ':id' => $produit->getId(),
@@ -48,7 +48,7 @@ class ProduitRepository {
     public function deleteProducts(int $id): bool{
         //suppression de l'objet Produit
 
-        $pdo=Database::getConnection();
+        $pdo=Database::getConnexion();
         $stmt=$pdo->prepare("DELETE FROM produit WHERE id=:id");
         return $stmt->execute([
             ':id' => $id

@@ -1,23 +1,23 @@
 <?php
-require_once 'config/Database.php';
+require_once '../config/Database.php';
 
 class UtilisateurRepository
 {
     public function getAllUser(): array
     {
-        $pdo = Database::getInstance();
+        $pdo = Database::getConnexion();
         $stmt = $pdo->query("SELECT * FROM users");
         $rows = $stmt->fetchAll();
         $users = [];
         foreach($rows as $row) {
-            $users[] = new Utilisateur($row['id'], $row['nom'], $row['email']);
+            $users[] = new Utilisateur($row['id'], $row['email'], $row['password_hash'], $row['role']);
         }
         return $users;
     }
 
-    public function addUser($string $email, string $password_hash, string $role)
+    public function addUser(string $email, string $password_hash, string $role)
     {
-        $pdo = Database::getInstance();
+        $pdo = Database::getConnexion();
         $stmt = $pdo->prepare("INSERT INTO users (email, password_hash, role) VALUES (:email, :hash, :role)");
         $stmt->execute([':email' => $email, ':hash' => $password_hash, ':role' => $role]);
     }

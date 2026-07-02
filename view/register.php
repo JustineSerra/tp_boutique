@@ -1,4 +1,4 @@
-<?php require_once "./controller/UtilisateurController.php"; ?>
+<?php require_once "../controller/RegisterController.php"; ?>
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -11,7 +11,7 @@
 <body>
     <main>
         <div class="wrapper">
-            <form action="UtilisateurController.php" method="POST" class="form">
+            <form action="../controller/RegisterController.php" method="POST" class="form">
                 <div>
                     <label for="email">Email</label>
                     <input type="email" name="email" id="email" required />
