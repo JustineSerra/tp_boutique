@@ -59,3 +59,5 @@ class Utilisateur
         $this->role = $role;
     }
 }
+
+
