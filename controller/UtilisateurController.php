@@ -1,36 +1,26 @@
 <?php
-require_once "Database.php";
 
-if (isset($_SESSION["user_id"])) {
-    header("Location: dashboard.php");
-    exit;
-}
+require_once __DIR__ . "/../model/Utilisateur.php";
+require_once __DIR__ . "/../repository/UtilisateurRepository.php";
 
-$error_msg = null;
 
-//verif : si le formulaire a la methode post - > je continue !!
 
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
+// if (isset($_SESSION["user_id"])) {
+//     // header("Location: ./view/index.php");
+//     exit;
+// };
 
-    $email = $_POST["email"];
-    $password = password_hash($_POST["password"], PASSWORD_DEFAULT);
+// //verif : si le formulaire a la methode post - > je continue !!
 
-    if ($email !== "" && $password !== "") {
-        $request = $pdo->prepare("SELECT * FROM users WHERE email == :email");
-        $request->execute(["email" => $email]);
-        $user = $request->fetch();
+// if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
-        $passwordVerif = password_verify($password, $user["mot_de_passe"]);
+//     $email = $_POST["email"];
+//     $password = $_POST["password"];
 
-        if ($passwordVerif) {
-            $_SESSION["user_id"] = $user["id"];
-            $_SESSION["user_email"] = $user["email"];
-            header("Location: dashboard.php");
-            exit;
-        } else {
-
-            $error_msg = "MOT DE PASSE OU EMAIL INCORRECT";
-        }
-    }
-}
-
+//     if ($email !== "" && $password !== "") {
+//         $pdo = Database::getConnexion();
+//         $request = $pdo->prepare("SELECT * FROM users WHERE email = :email");
+//         $request->execute(["email" => $email]);
+//         $user = $request->fetch();
+//         var_dump($user);
+//         $passwordVerif = password_verify($password, $user["password_hash"]);

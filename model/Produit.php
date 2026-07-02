@@ -1,4 +1,6 @@
 <?php
+declare(strict_types=1);
+
 class Produit {
     //propriétés privées afin de protéger les données de l'objet
     private ?int $id;
