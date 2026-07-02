@@ -4,14 +4,16 @@ require_once __DIR__ . "/../repository/ProduitRepository.php";
 require_once __DIR__ . "/../model/Produit.php";
 
 class ProduitController {
-    private ProduitRepository $produitRepository;
+    // private ProduitRepository $produitRepository;
 
-    public function __construct() {
-        $this->produitRepository = new ProduitRepository();
-    }
+    // public function __construct() {
+    //     $this->produitRepository = new ProduitRepository();
+    // }
 
     public function index(): void{
-        $listeProduits=$this->produitRepository->displayProducts();
+        // $listeProduits=$this->produitRepository->displayProducts();
+        $repository = new ProduitRepository();
+        $produits = $repository->displayProducts();
         require_once __DIR__ . "/../view/accueil.php";
     }
 
