@@ -5,9 +5,9 @@ class Commande {
     private ?int $id;
     private int $userId;
     private string $createdAt;
-    private int $total;
+    private float $total;
 
-    public function __construct(?int $id, int $userId, string $createdAt, int $total) {
+    public function __construct(?int $id, int $userId, string $createdAt, float $total) {
         $this->id = $id;
         $this->userId = $userId;
         $this->createdAt = $createdAt;
@@ -38,10 +38,10 @@ class Commande {
         return $this;
     }
 
-    public function getTotal(): int {
+    public function getTotal(): float {
         return $this->total;
     }
-    public function setTotal(int $total): self {
+    public function setTotal(float $total): self {
         $this->total = $total;
         return $this;
     }

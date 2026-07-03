@@ -10,9 +10,21 @@ class Router
 
         match ($route) {
             'accueil' => (new ProduitController())->index(),
+            'panier' => (new CommandeController())->afficherPanier(),
+            'panier/ajouter' => (new CommandeController())->ajouterPanier(),
+            'panier/modifier' => (new CommandeController())->modifierQuantite(),
+            'panier/supprimer' => (new CommandeController())->supprimerDuPanier(),
+            'panier/vider' => (new CommandeController())->viderPanier(),
+            'panier/valider' => (new CommandeController())->validerCommande(),
+            "logout" => $this->handleLogout(),
+            "admin" => (new AdminController())->index(),
 
             default => $this->notFound(),
         };
+    }
+
+    private function handleLogout(): void {
+        require_once __DIR__ . "/../controller/logout.php";
     }
 
     private function notFound(): void

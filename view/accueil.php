@@ -8,29 +8,7 @@
         <div class="card">
             <h2 class="title"><?= htmlspecialchars($produit->getNom()) ?></h2>
 
-            <div class="price">
-                <?= number_format($produit->getPrix(), 2, ',', ' ') ?><p>€</p>
-            </div>
-
-            <p><?= htmlspecialchars($produit->getDescription()) ?></p>
-
-            <a class="cart-button"
-                href="view/panier.php?id=<?= $produit->getId() ?>">
-                Ajouter au panier
-            </a>
-        </div>
-
-    <?php endforeach; ?>
-</div>
-</div>
-
-
-
-
-
-
-
-
-
-<?php include_once __DIR__ . "/layout/footer.php";
-?>
+    <?= htmlspecialchars($produit->getNom()) ?>
+    <?= number_format($produit->getPrix(), 2, ',','') ?>
+    <?= htmlspecialchars($produit->getDescription()); ?>
+<?php endforeach; ?>
