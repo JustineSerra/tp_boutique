@@ -6,6 +6,8 @@ if (session_status() === PHP_SESSION_NONE) {
 }
 
 require_once __DIR__ . '/config/Router.php';
+require_once __DIR__ . '/controller/ProduitController.php';
+require_once __DIR__ . '/controller/CommandeController.php';
 require_once __DIR__ . '/config/Database.php';
 require_once __DIR__ . '/controller/AdminController.php';
 
