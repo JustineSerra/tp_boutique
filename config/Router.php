@@ -1,12 +1,10 @@
 <?php
-declare(strict_types=1);
 
-require_once __DIR__ . "/../controller/ProduitController.php";
-require_once __DIR__ . "/../controller/AdminController.php";
+declare(strict_types=1);
 
 class Router
 {
-   public function route(): void
+    public function route(): void
     {
         $route = $_GET['route'] ?? 'accueil';
 
@@ -34,8 +32,4 @@ class Router
         http_response_code(404);
         echo "Page non trouvée, t'es un gros naze ! ";
     }
-}   
-?>
-
-
-
+}
