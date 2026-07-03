@@ -1,9 +1,8 @@
 <?php
 declare(strict_types=1);
 
-
-
-declare(strict_types=1);
+require_once __DIR__ . "/../controller/ProduitController.php";
+require_once __DIR__ . "/../controller/AdminController.php";
 
 class Router
 {
@@ -13,9 +12,15 @@ class Router
 
         match ($route) {
             'accueil' => (new ProduitController())->index(),
+            "logout" => $this->handleLogout(),
+            "admin" => (new AdminController())->index(),
 
             default => $this->notFound(),
         };
+    }
+
+    private function handleLogout(): void {
+        require_once __DIR__ . "/../controller/logout.php";
     }
 
     private function notFound(): void
