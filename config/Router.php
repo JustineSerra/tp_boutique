@@ -1,13 +1,10 @@
 <?php
-declare(strict_types=1);
-
-
 
 declare(strict_types=1);
 
 class Router
 {
-   public function route(): void
+    public function route(): void
     {
         $route = $_GET['route'] ?? 'accueil';
 
@@ -23,8 +20,4 @@ class Router
         http_response_code(404);
         echo "Page non trouvée, t'es un gros naze ! ";
     }
-}   
-?>
-
-
-
+}

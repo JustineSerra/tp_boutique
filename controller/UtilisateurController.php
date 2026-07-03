@@ -9,7 +9,7 @@ class UtilisateurController
     {
         $repository = new UtilisateurRepository();
         $users = $repository->getAllUser();
-        require_once __DIR__ . "/../view/register.php";
+        require_once __DIR__ . "/tp_boutique/view/register.php";
     }
 
     public function create()
@@ -29,7 +29,7 @@ class UtilisateurController
                 echo "Veuillez remplir tous les champs.";
             }
         }
-        require_once __DIR__ . "/../view/register.php";
+        require_once __DIR__ . "/tp_boutique/view/register.php";
     }
 
     public function delete()
@@ -37,11 +37,10 @@ class UtilisateurController
         $id = $_GET['id'];
         $repository = new UtilisateurRepository();
         $repository->deleteUser($id);
-        header('Location: /register');
+        header('Location: /tp_boutique/view/register.php');
     }
 }
 
-// if (isset($_SESSION["user_id"])) {
-//     // header("Location: ./view/index.php");
-//     exit;
-// };
+ if (isset($_SESSION["user_id"])) {
+ header("Location: /tp_boutique/view/accueil.php");
+};

@@ -5,22 +5,31 @@
 }
 
 body {
-    background-image: linear-gradient(to bottom, #60c5ff, #9bdfff, #e0f9ff, #f8fcff, #ffffff);
+    background-image: linear-gradient(to bottom, #16c9ff, #16c9ff, #e0f9ff, #f8fcff, #ffffff);
     background-size: 100% 1000px;
 }
 
 .logo {
-    height: 100px;
-    width: 100px;
+    height: 200px;
+    width: 200px;
+    z-index: 2;
 
+}
+
+.header_title {
+    z-index: 2
 }
 
 
 .header_nav {
+    cursor: pointer;
     display: flex;
+    align-items: center;
+    height: 80px;
     justify-content: center;
     gap: 100px;
-    background-color: rgb(255, 255, 255);
+    background-color: white;
+    background-size: 100px;
     list-style: none;
     font-family: "Istok Web", sans-serif;
     font-style: normal;
@@ -41,8 +50,246 @@ body {
         0 0 0.2em rgb(0, 195, 255);
     gap: 50px;
     padding: 10px;
+    background-image: url(./images/nuage.gif);
+    background-size: cover;
 }
 
 li:hover {
-    color: rgb(0, 195, 255);;
+
+    color: rgb(0, 195, 255);
+    transition: all 1s ease;
+    font-size: 1.1rem;
+}
+
+.card {
+    --bg-card: #27272a;
+    --primary: #00a2ff;
+    --primary-800: #00a2ff;
+    --primary-shadow: #00a2ff;
+    --light: #ffffff;
+    --zinc-800: #18181b;
+    --bg-linear: linear-gradient(0deg, var(--primary) 50%, var(--light) 125%);
+    text-shadow: #0065fc 1px 0 5px;
+    text-shadow: #0065fc 0px 5 5px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    padding: 1rem;
+    width: 14rem;
+    background-image: url(./images/card.gif);
+    border-radius: 1rem;
+    border: rgb(34, 70, 126) 1px solid;
+    font-family: "Istok Web", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+
+.title {
+
+    overflow: clip;
+
+    width: 100%;
+
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--light);
+    text-transform: capitalize;
+    text-wrap: nowrap;
+    text-overflow: ellipsis;
+    text-transform: uppercase;
+}
+
+.price {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--light);
+    display: flex;
+}
+
+.cart-button {
+    cursor: pointer;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.25rem;
+
+    padding: 0.5rem;
+
+    background-image: var(--bg-linear);
+
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--light);
+    text-wrap: nowrap;
+
+    border: 2px solid hsla(199, 100%, 53%, 0.5);
+    border-radius: 0.5rem;
+    box-shadow: inset 0 0 0.25rem 1px var(--light);
+    text-decoration: none;
+
+
+}
+
+.card_wrapper {
+    display: flex;
+    flex-flow: row wrap;
+    gap: 15px;
+    margin-top: 20px;
+    margin-left: 10px;
+
+}
+
+.cart-button:hover {
+    background: #0099ff;
+    transition:
+        opacity .3s ease-in-out;
+
+}
+
+
+.frutiger-button {
+    cursor: pointer;
+    position: relative;
+    padding: 2px;
+    border-radius: 6px;
+    border: 0;
+    height: 50px;
+    text-shadow: 1px 1px #000a;
+    background: linear-gradient(#006caa, #00c3ff);
+    box-shadow: 0px 4px 6px 0px #0008;
+    transition: 0.3s all;
+}
+
+.frutiger-button:hover {
+    box-shadow: 0px 6px 12px 0px #0009;
+}
+
+.frutiger-button:active {
+    box-shadow: 0px 0px 0px 0px #0000;
+}
+
+.inner {
+    position: relative;
+    inset: 0px;
+    padding: 1em;
+    border-radius: 4px;
+    background: radial-gradient(circle at 50% 100%, #f5ffff 10%, #30f8f800 55%),
+        linear-gradient(#0078da, #0dc7ff);
+    overflow: hidden;
+    transition: inherit;
+}
+
+.inner::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(-65deg, #0000 40%, #fff7 50%, #0000 70%);
+    background-size: 200% 100%;
+    background-repeat: no-repeat;
+    animation: thing 3s ease infinite;
+}
+
+@keyframes thing {
+    0% {
+        background-position: 130%;
+        opacity: 1;
+    }
+
+    to {
+        background-position: -166%;
+        opacity: 0;
+    }
+}
+
+.top-white {
+    position: absolute;
+    border-radius: inherit;
+    inset: 0 -8em;
+    background: radial-gradient(circle at 50% -270%,
+            #fff 45%,
+            #fff6 60%,
+            #fff0 60%);
+    transition: inherit;
+}
+
+.inner::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    transition: inherit;
+    box-shadow: inset 0px 2px 8px -2px #0000;
+}
+
+.frutiger-button:active .inner::after {
+    box-shadow: inset 0px 2px 8px -2px #000a;
+}
+
+.text {
+    position: relative;
+    z-index: 1;
+    color: white;
+    font-weight: 550;
+    transition: inherit;
+}
+
+.svg {
+    height: 100px;
+    fill: #0099ff;
+}
+
+.cart {
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+    width: 200px;
+    position: absolute;
+    right: 50px;
+    top: 10px;
+}
+
+.rainbow {
+    z-index: 0;
+    position: absolute;
+    margin: -10px;
+}
+
+.rainbow_img {
+    height: 300px;
+    width: 350px;
+}
+
+.panier_wrapper {
+    display: flex;
+}
+
+.cart-button-buy {
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.25rem;
+    height: 100%;
+    padding: 0.5rem;
+    background-image: var(--bg-linear);
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--light);
+    text-wrap: nowrap;
+    border: 2px solid hsla(199, 100%, 53%, 0.5);
+    border-radius: 0.5rem;
+    box-shadow: inset 0 0 0.25rem 1px var(--light);
+    text-decoration: none;
+
+
+}
+
+.cart-button-buy:hover {
+    background: #0099ff;
+    transition:
+        opacity .3s ease-in-out;
+
 }
