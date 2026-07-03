@@ -1,6 +1,9 @@
 <?php
 declare(strict_types=1);
 
+require_once __DIR__ . "/../controller/ProduitController.php";
+require_once __DIR__ . "/../controller/AdminController.php";
+
 class Router
 {
    public function route(): void
@@ -15,8 +18,15 @@ class Router
             'panier/supprimer' => (new CommandeController())->supprimerDuPanier(),
             'panier/vider' => (new CommandeController())->viderPanier(),
             'panier/valider' => (new CommandeController())->validerCommande(),
+            "logout" => $this->handleLogout(),
+            "admin" => (new AdminController())->index(),
+
             default => $this->notFound(),
         };
+    }
+
+    private function handleLogout(): void {
+        require_once __DIR__ . "/../controller/logout.php";
     }
 
     private function notFound(): void

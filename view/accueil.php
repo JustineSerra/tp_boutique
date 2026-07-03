@@ -6,6 +6,6 @@
 <?php foreach ($produits as $produit): ?>
 
     <?= htmlspecialchars($produit->getNom()) ?>
-    <?= number_format($produit->getPrix(), 2, ',', ' ') ?>
+    <?= number_format($produit->getPrix(), 2, ',','') ?>
     <?= htmlspecialchars($produit->getDescription()); ?>
 <?php endforeach; ?>
