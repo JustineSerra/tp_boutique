@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="/TP/tp_boutique/view/css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Istok+Web:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
@@ -13,9 +13,11 @@
 
 <body>
 
+<!-- //SERIEUX C LA SEULE PARTIE FUN DU TP -->
+
     <header class="header">
-        <div class="header_wrapper"><img class="logo" src="./css/images/logo.gif" alt="logo en forme de smiley">
-            <div class="header_title"><img src="./css/images/text.gif">
+        <div class="header_wrapper"><img class="logo" src="./view/css/images/logo.gif" alt="logo en forme de smiley">
+            <div class="header_title"><img src="./view/css/images/text.gif">
                 <p>le meilleur site e-commerce</p>
             </div>
         </div>
